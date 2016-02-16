@@ -1,0 +1,30 @@
+{
+  "name": "understeviant",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Steviant/_s.git"
+  },
+  "author": "Steve Mitchell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Steviant/_s/issues"
+  },
+  "homepage": "https://github.com/Steviant/_s#readme",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-prompt": "^0.1.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.2.0"
+  },
+  "dependencies": {
+    "node-bourbon": "^4.2.3",
+    "node-neat": "^1.7.2"
+  }
+}
