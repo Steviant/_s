@@ -14,9 +14,21 @@ gulp.task('styles', function () {
         .pipe(sass({
             includePaths: ['styles'].concat(neat, normalize)
         }))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./'))
+        .pipe(browserSync.stream());
+});
+
+// Static Server + watching scss/html files
+gulp.task('serve', ['styles'], function() {
+
+  browserSync.init({
+      proxy: "steviant.dev" // replace with your local development environment
+  });
+
+    gulp.watch("scss/**/*.scss", ['styles']);
+    gulp.watch("*.php").on('change', browserSync.reload);
 });
 
 gulp.task('default',function(){
-    gulp.start('styles');
+    gulp.start('serve');
 });

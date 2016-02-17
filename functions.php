@@ -137,6 +137,11 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
+ * Custom template hooks for this theme.
+ */
+require get_template_directory() . '/inc/template-hooks.php';
+
+/**
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
@@ -144,9 +149,29 @@ require get_template_directory() . '/inc/extras.php';
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+// require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Helper library for the theme customizer.
+ */
+require get_template_directory() . '/inc/customizer-library/customizer-library.php';
+
+/**
+ * Define options for the theme customizer.
+ */
+require get_template_directory() . '/inc/customizer-options.php';
+
+/**
+ * Output inline styles based on theme customizer selections.
+ */
+require get_template_directory() . '/inc/customizer-styles.php';
+
+/**
+ * Additional filters and actions based on theme customizer selections.
+ */
+require get_template_directory() . '/inc/mods.php';

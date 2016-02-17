@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "node-bourbon": "^4.2.3",
+    "node-font-awesome": "^1.0.2",
     "node-neat": "^1.7.2"
   }
 }

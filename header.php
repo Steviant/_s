@@ -24,6 +24,8 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>
 
+	<?php _s_before_header(); ?>
+
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
 			<?php
@@ -46,5 +48,7 @@
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
+
+	<?php _s_after_header(); ?>
 
 	<div id="content" class="site-content">
