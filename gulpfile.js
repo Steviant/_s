@@ -34,7 +34,7 @@ gulp.task('pot', function () {
 			domain: '_s',
 			destFile:'_s.pot',
 			package: '_s',
-			bugReport: 'http://example.com',
+			bugReport: 'http://steviantdesign.co',
 			lastTranslator: 'Steve Mitchell <steve@steviant.co.uk>',
 			team: 'Steviant Design Co. <steve@steviant.co.uk>'
 		} ))
