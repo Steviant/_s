@@ -26,3 +26,14 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import "neat";
 @import "base/base";
 @import "theme/theme";
+
+.woohoo {
+  @include align-items(stretch);
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(flex-start);
+
+  .woo {
+    @include flex(1);
+  }
+}

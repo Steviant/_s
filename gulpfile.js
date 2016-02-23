@@ -6,6 +6,9 @@ var browserSync = require('browser-sync').create();
 var prompt      = require('gulp-prompt');
 var wpPot       = require('gulp-wp-pot');
 var sort        = require('gulp-sort');
+var postcss     = require('gulp-postcss');
+var flexibility = require('postcss-flexibility');
+var cssnano     = require('cssnano');
 
 var paths = {
     scss: './scss/**/*.scss'
@@ -15,10 +18,15 @@ var paths = {
  * Process the .scss files and output to the correct place.
  ******************************************************************************/
 gulp.task('styles', function () {
+    var processors = [
+      flexibility,
+      cssnano
+    ];
     return gulp.src(paths.scss)
         .pipe(sass({
             includePaths: ['styles'].concat(neat, normalize)
         }))
+        .pipe(postcss(processors))
         .pipe(gulp.dest('./'))
         .pipe(browserSync.stream());
 });
