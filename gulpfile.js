@@ -9,10 +9,27 @@ var sort        = require('gulp-sort');
 var postcss     = require('gulp-postcss');
 var flexibility = require('postcss-flexibility');
 var cssnano     = require('cssnano');
+var zip         = require('gulp-zip');
+var pkg         = require('./package.json');
 
 var paths = {
     scss: './scss/**/*.scss'
 };
+
+var zipDirs = [
+    'inc/**/*',
+    'js/*',
+    'languages/*',
+    'template-parts/*',
+    '*.css',
+    '*.php',
+    '*.txt',
+    '!codesniffer.ruleset.xml',
+    '!CONTRIBUTING.md',
+    '!gulpfile.js',
+    '!package.json',
+    '!README.md'
+];
 
 /*******************************************************************************
  * Process the .scss files and output to the correct place.
@@ -58,6 +75,16 @@ gulp.task('serve', ['styles'], function() {
   });
   gulp.watch("scss/**/*.scss", ['styles']);
   gulp.watch("*.php").on('change', browserSync.reload);
+});
+
+/*******************************************************************************
+ * Creates a zip file to distribute the stage extension
+ ******************************************************************************/
+gulp.task('zip', function() {
+    return gulp.src(zipDirs, { base: "../" })
+        .pipe(zip(pkg.name + '-' + pkg.version + '.zip'))
+        .pipe(gulp.dest('./dist'));
+
 });
 
 /*******************************************************************************
