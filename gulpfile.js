@@ -7,10 +7,13 @@ var prompt      = require('gulp-prompt');
 var wpPot       = require('gulp-wp-pot');
 var sort        = require('gulp-sort');
 var postcss     = require('gulp-postcss');
+var rename      = require("gulp-rename");
+var rtlcss      = require('gulp-rtlcss');
 var flexibility = require('postcss-flexibility');
 var cssnano     = require('cssnano');
 var zip         = require('gulp-zip');
 var pkg         = require('./package.json');
+var wiredep     = require('wiredep').stream;
 
 var paths = {
     scss: './scss/**/*.scss'
@@ -24,6 +27,7 @@ var zipDirs = [
     '*.css',
     '*.php',
     '*.txt',
+    '*.png',
     '!codesniffer.ruleset.xml',
     '!CONTRIBUTING.md',
     '!gulpfile.js',
@@ -45,7 +49,10 @@ gulp.task('styles', function () {
         }))
         .pipe(postcss(processors))
         .pipe(gulp.dest('./'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream())
+        .pipe(rtlcss()) // Convert to RTL.
+        .pipe(rename({ basename: 'rtl' }))
+        .pipe(gulp.dest('./'));
 });
 
 /*******************************************************************************

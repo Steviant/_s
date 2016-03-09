@@ -7,12 +7,66 @@
 	padding: 0;
 }
 
+img {
+	height: auto;
+}
+
+figure {
+	margin: 0;
+}
+
 /* Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
 object {
 	max-width: 100%;
 }
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+  FLUIDITY v0.1.0
+  @mrmrs - http://mrmrs.cc
+  MIT
+*/
+/*
+
+  Responsive Utilities
+
+*/
+img, canvas, iframe, video, svg, select, textarea {
+  max-width: 100%; }
+
+/* Wrap tables or pre elements in a div with this class */
+.overflow-container {
+  overflow-x: scroll; }
+
+/*
+  Aspect ratios for media objects i.e canvas, iframe, video, svg etc.
+  Defaults to 16x9
+*/
+.aspect-ratio {
+  height: 0;
+  padding-top: 56.25%;
+  position: relative; }
+
+.aspect-ratio--object {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; }
+
 
 /*--------------------------------------------------------------
 ## Captions

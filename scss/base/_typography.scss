@@ -1,4 +1,6 @@
 body {
+  direction: ltr;
+  unicode-bidi: embed;
   color: $base-font-color;
   font-family: $base-font-family;
   font-size: $base-font-size;

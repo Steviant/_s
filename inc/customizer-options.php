@@ -5,6 +5,14 @@
  * @package Customizer Library Demo
  */
 
+ /**
+  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+  */
+ // function _s_customize_preview_js() {
+ // 	wp_enqueue_script( '_s_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
+ // }
+ // add_action( 'customize_preview_init', '_s_customize_preview_js' );
+
 function _s_options() {
 
 	// Theme defaults
@@ -22,6 +30,62 @@ function _s_options() {
 
 	// Adds the sections to the $options array
 	$options['sections'] = $sections;
+
+	// Header
+
+	$section = 'header';
+
+	$sections[] = array(
+		'id' => $section,
+		'title' => __( 'Header', '_s' ),
+		'priority' => '20',
+		'description' => __( 'Stuff for the header', '_s' )
+	);
+
+	$header_choices = array(
+		'logo-left' =>  __( 'Logo on left', '_s'),
+		'logo-right' =>  __( 'Logo on right', '_s'),
+		'logo-top' =>  __( 'Logo at top', '_s'),
+		'logo-bottom' =>  __( 'Logo at bottom', '_s')
+	);
+
+	$options['header-layout'] = array(
+		'id' => 'header-layout',
+		'label'   => __( 'Header Layout', '_s' ),
+		'section' => $section,
+		'type'    => 'radio',
+		'choices' => $header_choices,
+		'default' => 'logo-left'
+	);
+
+	$options['header-padding'] = array(
+		'id' => 'header-padding',
+		'label'   => __( 'Padding', '_s' ),
+		'section' => $section,
+		'type'    => 'range',
+		'transport' => 'postMessage',
+		'input_attrs' => array(
+					'min'   => 0,
+					'max'   => 100,
+					'step'  => 1,
+					'style' => 'color: #0a0',
+		)
+	);
+
+  $options['logo-width'] = array(
+    'id' => 'logo-width',
+    'label'   => __( 'Logo Size', '_s' ),
+    'section' => $section,
+    'type'    => 'range',
+    'transport' => 'postMessage',
+    'input_attrs' => array(
+          'min'   => 0,
+          'max'   => 256,
+          'step'  => 1,
+          'style' => 'color: #0a0',
+    )
+  );
+
 
 	// Logo
 	$section = 'logo';

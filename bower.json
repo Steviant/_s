@@ -1,0 +1,19 @@
+{
+  "name": "_s",
+  "description": "[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)",
+  "main": "gulpfile.js",
+  "authors": [
+    "Steve Mitchell"
+  ],
+  "license": "GPL2",
+  "homepage": "https://github.com/Steviant/_s",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

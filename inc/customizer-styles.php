@@ -43,6 +43,38 @@ function _s_customizer_build_styles() {
 			)
 		) );
 	}
+
+	// Header Padding
+	$setting = 'header-padding';
+	$mod = get_theme_mod( $setting, customizer_library_get_default( $setting ) );
+	if ( $mod !== customizer_library_get_default( $setting ) ) {
+		// $color = sanitize_hex_color( $mod );
+		Customizer_Library_Styles()->add( array(
+			'selectors' => array(
+				'.site-header'
+			),
+			'declarations' => array(
+				'padding-top' => $mod . 'px',
+				'padding-bottom' => $mod . 'px',
+			)
+		) );
+	}
+
+	// Logo width
+	$setting = 'logo-width';
+	$mod = get_theme_mod( $setting, customizer_library_get_default( $setting ) );
+	if ( $mod !== customizer_library_get_default( $setting ) ) {
+		// $color = sanitize_hex_color( $mod );
+		Customizer_Library_Styles()->add( array(
+			'selectors' => array(
+				'.site-logo'
+			),
+			'declarations' => array(
+				'width' => $mod . 'px'
+			)
+		) );
+	}
+
 	// Border Color
 	$setting = 'border';
 	$mod = get_theme_mod( $setting, customizer_library_get_default( $setting ) );

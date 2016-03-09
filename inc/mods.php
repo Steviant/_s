@@ -19,3 +19,11 @@ function demo_fonts() {
 	wp_enqueue_style( 'demo_fonts', $font_uri, array(), null, 'screen' );
 }
 add_action( 'wp_enqueue_scripts', 'demo_fonts' );
+
+
+function remove_width_attribute( $html ) {
+   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+   return $html;
+}
+
+add_filter( 'jetpack_the_site_logo', 'remove_width_attribute', 10 );

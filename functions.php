@@ -36,6 +36,21 @@ function _s_setup() {
 	add_theme_support( 'title-tag' );
 
 	/*
+	 * Add Jetpack's Site Logo functionality to the theme. This will be integrated
+	 * into core soon, so Jetpack won't be necessary.
+	 */
+	 $args = array(
+	     'header-text' => array(
+	         'site-title',
+	         'site-description',
+	     ),
+	     'size' => 'full',
+	 );
+	 add_theme_support( 'site-logo', $args );
+
+
+
+	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/

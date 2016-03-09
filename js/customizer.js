@@ -13,11 +13,19 @@
 			$( '.site-title a' ).text( to );
 		} );
 	} );
+
 	wp.customize( 'blogdescription', function( value ) {
 		value.bind( function( to ) {
 			$( '.site-description' ).text( to );
 		} );
 	} );
+
+	wp.customize('header-padding', function( value ) {
+		value.bind(function( to ) {
+			$('.site-header').css('padding-top', to + 'em');
+		});
+	});
+
 	// Header text color.
 	wp.customize( 'header_textcolor', function( value ) {
 		value.bind( function( to ) {

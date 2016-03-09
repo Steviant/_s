@@ -1,3 +1,42 @@
-.site-header {}
+.site-header {
+  @include align-items(center);
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+  @include padding($base-spacing*2 $gutter/2);
+  width: 100%;
 
-.site-branding {}
+  &--logo-top,
+  &--logo-bottom {
+    @include flex-direction(column);
+  }
+
+  &--logo-left,
+  &--logo-top {
+    .site-branding {
+      @include order(1);
+    }
+
+    .main-navigation,
+    .sliding-panel-button {
+      @include order(2);
+    }
+  }
+
+  &--logo-right,
+  &--logo-bottom {
+    .site-branding {
+      @include order(2);
+    }
+
+    .main-navigation,
+    .sliding-panel-button {
+      @include order(1);
+    }
+  }
+}
+
+.site-branding {
+  padding: .3em;
+}
