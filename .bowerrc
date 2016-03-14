@@ -1,0 +1,6 @@
+{
+    "directory": "inc/vendor",
+    "scripts": {
+      "postinstall": "gulp bower"
+    }
+}

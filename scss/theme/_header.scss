@@ -4,7 +4,7 @@
   @include flex-direction(row);
   @include justify-content(space-between);
   @include flex-wrap(wrap);
-  @include padding($base-spacing*2 $gutter/2);
+  @include padding(null $gutter/2);
   width: 100%;
 
   &--logo-top,

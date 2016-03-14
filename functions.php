@@ -126,14 +126,22 @@ function _s_widgets_init() {
 add_action( 'widgets_init', '_s_widgets_init' );
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue scripts and styles. Everything wrapped in bower:whatever comments is
+ * injected automatically via 'gulp bower'
  */
 function _s_scripts() {
+	// bower:css
+	wp_enqueue_style('animate-css',get_stylesheet_directory_uri() . '/inc/vendor/animate.css/animate.css');
+	// endbower
+
 	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
+	
+	wp_enqueue_script( 'jquery' );
+
+	// bower:js
+	// endbower
 
 	wp_enqueue_script( '_s-main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '20120206', true );
-	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
 	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

@@ -86,7 +86,6 @@ function _s_options() {
     )
   );
 
-
 	// Logo
 	$section = 'logo';
 

@@ -1,19 +1,20 @@
-var gulp        = require('gulp');
-var sass        = require('gulp-sass');
-var neat        = require('node-neat').includePaths;
-var normalize   = require('node-normalize-scss').includePaths;
-var browserSync = require('browser-sync').create();
-var prompt      = require('gulp-prompt');
-var wpPot       = require('gulp-wp-pot');
-var sort        = require('gulp-sort');
-var postcss     = require('gulp-postcss');
-var rename      = require("gulp-rename");
-var rtlcss      = require('gulp-rtlcss');
-var flexibility = require('postcss-flexibility');
-var cssnano     = require('cssnano');
-var zip         = require('gulp-zip');
-var pkg         = require('./package.json');
-var wiredep     = require('wiredep').stream;
+var gulp           = require('gulp');
+var sass           = require('gulp-sass');
+var neat           = require('node-neat').includePaths;
+var normalize      = require('node-normalize-scss').includePaths;
+var browserSync    = require('browser-sync').create();
+var prompt         = require('gulp-prompt');
+var wpPot          = require('gulp-wp-pot');
+var sort           = require('gulp-sort');
+var postcss        = require('gulp-postcss');
+var rename         = require("gulp-rename");
+var rtlcss         = require('gulp-rtlcss');
+var inject         = require('gulp-inject');
+var flexibility    = require('postcss-flexibility');
+var cssnano        = require('cssnano');
+var zip            = require('gulp-zip');
+var pkg            = require('./package.json');
+var wiredep        = require('wiredep').stream;
 
 var paths = {
     scss: './scss/**/*.scss'
@@ -93,6 +94,40 @@ gulp.task('zip', function() {
         .pipe(gulp.dest('./dist'));
 
 });
+
+/*******************************************************************************
+ * Wire our Bower dependencies into functions.php
+ ******************************************************************************/
+gulp.task('bower', function () {
+  gulp.src('./functions.php')
+    .pipe(wiredep({
+      exclude: [ '/jquery/' ],
+      fileTypes: {
+          php: {
+              block: /(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi,
+              detect: {
+                  js: /script\(.*src=['"]([^'"]+)/gi,
+                  css: /link\(.*href=['"]([^'"]+)/gi
+              },
+              replace: {
+                  js: function(filePath){
+                      var fileName = filePath.substring(filePath.lastIndexOf('/')+1);
+                      var wpHandle = fileName.replace(".","-");
+                      return "wp_enqueue_script('"+wpHandle+"',get_stylesheet_directory_uri() . '/"+filePath+"');";
+                  },
+                  css: function(filePath){
+                      var fileName = filePath.substring(filePath.lastIndexOf('/')+1);
+                      var wpHandle = fileName.replace(".","-");
+                      return "wp_enqueue_style('"+wpHandle+"',get_stylesheet_directory_uri() . '/"+filePath+"');";
+                  }
+              }
+          }
+      }
+    }))
+
+    .pipe(gulp.dest('./'));
+});
+
 
 /*******************************************************************************
  * Goooooo!
