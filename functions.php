@@ -135,7 +135,7 @@ function _s_scripts() {
 	// endbower
 
 	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
-	
+
 	wp_enqueue_script( 'jquery' );
 
 	// bower:js
@@ -173,7 +173,7 @@ require get_template_directory() . '/inc/extras.php';
 /**
  * Customizer additions.
  */
-// require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
